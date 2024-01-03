@@ -1,13 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Animated, StyleSheet, Text, View, Platform} from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      LarAnimada: new Animated.Value(150),
+      AltAnimada: new Animated.Value(50)
+    };
+    
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+
+        <Animated.View style={{
+          with: this.state.LarAnimada,
+          height: this.state.AltAnimada,
+          backgroundColor: '#4169E1',
+          justifyContent: 'center'
+        }}>
+
+          <Text style={{
+            color: '#FFF',
+            fontSize: 22,
+            textAlign: 'center'
+          }}> Carregando... </Text>
+        </Animated.View>
+
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
