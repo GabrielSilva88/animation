@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import { Animated, StyleSheet, Text, View, Platform} from 'react-native';
+import { Animated, StyleSheet, Text, View } from 'react-native';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       LarAnimada: new Animated.Value(150),
-      AltAnimada: new Animated.Value(50)
+      altAnimada: new Animated.Value(50)
     };
-    
+    Animated.timing(
+      this.state.altAnimada,
+      {
+        toValue: 150,
+        duration: 3000
+      }
+    ).start();
+
   }
 
   render() {
@@ -17,7 +24,7 @@ export default class App extends Component {
 
         <Animated.View style={{
           with: this.state.LarAnimada,
-          height: this.state.AltAnimada,
+          height: this.state.altAnimada,
           backgroundColor: '#4169E1',
           justifyContent: 'center'
         }}>
